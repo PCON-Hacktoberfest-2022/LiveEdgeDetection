@@ -1,7 +1,8 @@
-package com.ersubhadip.liveedgedetectionsdk
+package com.ersubhadip.liveedgedetectionsdk.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ersubhadip.liveedgedetectionsdk.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
