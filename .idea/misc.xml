@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Development/LiveEdgeDetectionSDK/app/src/main/res/layout/activity_main.xml" value="0.17760416666666667" />
+        <entry key="..\:/Android Development/LiveEdgeDetectionSDK/app/src/main/res/drawable/card_bg.xml" value="0.1645" />
+        <entry key="..\:/Android Development/LiveEdgeDetectionSDK/app/src/main/res/drawable/card_bg_2.xml" value="0.1645" />
+        <entry key="..\:/Android Development/LiveEdgeDetectionSDK/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Android Development/LiveEdgeDetectionSDK/app/src/main/res/layout/activity_splash.xml" value="0.10582010582010581" />
       </map>
     </option>

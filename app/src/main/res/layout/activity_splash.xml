@@ -18,12 +18,12 @@
         android:id="@+id/splash_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="18dp"
         android:fontFamily="monospace"
-        android:text="Detects Edges,\nany form,\nany where"
+        android:text="Live Edge Detection,\nin any form,\nany where"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="normal" />
 
 </LinearLayout>

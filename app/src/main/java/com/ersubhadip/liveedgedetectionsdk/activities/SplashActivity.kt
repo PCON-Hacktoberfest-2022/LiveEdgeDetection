@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        animationUp = AnimationUtils.loadAnimation(this@SplashActivity,)
+
 
         GlobalScope.launch(Dispatchers.Main) {
             delay(3000L)
