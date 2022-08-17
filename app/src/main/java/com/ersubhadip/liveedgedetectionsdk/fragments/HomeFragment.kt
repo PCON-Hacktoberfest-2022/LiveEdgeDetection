@@ -57,11 +57,17 @@ class HomeFragment : Fragment() {
             )
         }
 
+        binding.uploadCard.setOnClickListener {
+            changeFragment(UploadFragment())
+        }
+
+        binding.urlCard.setOnClickListener {
+            changeFragment(UrlFragment())
+        }
+
         binding.cameraCard.setOnClickListener(View.OnClickListener {
             changeFragment(CameraFragment())
         })
-
-        
     }
 
     private fun changeFragment(fragment: Fragment) {
@@ -69,5 +75,4 @@ class HomeFragment : Fragment() {
         transaction?.replace(frame!!.id, fragment)
         transaction?.commit()
     }
-
 }
