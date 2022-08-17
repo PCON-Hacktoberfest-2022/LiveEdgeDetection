@@ -1,12 +1,25 @@
 package com.ersubhadip.liveedgedetectionsdk.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ersubhadip.liveedgedetectionsdk.R
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.ersubhadip.liveedgedetectionsdk.databinding.ActivityMainBinding
+import com.ersubhadip.liveedgedetectionsdk.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        changeFragment(HomeFragment())
+
     }
+
+    private fun changeFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(binding.frame.id, fragment)
+        transaction.commit()
+    }
+
 }
