@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         changeFragment(HomeFragment())
 
+
     }
 
     private fun changeFragment(fragment: Fragment) {
