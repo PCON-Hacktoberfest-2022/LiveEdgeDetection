@@ -1,5 +1,6 @@
 package com.ersubhadip.liveedgedetectionsdk.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentUrlBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -17,7 +19,7 @@ import java.net.URLConnection
 
 class UrlFragment : Fragment() {
     private lateinit var binding: FragmentUrlBinding
-    var img: Boolean = false
+    private var img: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +69,10 @@ class UrlFragment : Fragment() {
         }
 
         binding.activeBtn.setOnClickListener {
-            //todo:send to process
+            val dialog = Dialog(requireContext())
+            dialog.setContentView(R.layout.process_dialog)
+            dialog.setCancelable(true)
+            dialog.show()
         }
 
     }
