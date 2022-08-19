@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentUrlBinding
@@ -21,8 +22,9 @@ class UrlFragment : Fragment() {
     private var frame: FrameLayout? = null
 
     companion object {
-        var URL = ""
+        var url: String? = null
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,8 +78,8 @@ class UrlFragment : Fragment() {
         }
 
         binding.activeBtn.setOnClickListener {
-            URL = binding.url.text.toString().trim()
-            changeFragment(ResultFragment(), "")
+            url = binding.url.text.toString().trim()
+            changeFragment(ResultFragment())
         }
 
     }
@@ -97,14 +99,16 @@ class UrlFragment : Fragment() {
 //        return img
 //    }
 
-    private fun changeFragment(fragment: Fragment, url: String) {
-        val result = UrlFragment()
+    private fun changeFragment(fragment: Fragment) {
         val bundle = Bundle()
-        bundle.putString("uri", url)
-        result.arguments = bundle
-        result.arguments = arguments
+        bundle.putInt("indexFragment", 2)
+        bundle.putString("url", binding.url.text.toString().trim())
         val transaction = activity?.supportFragmentManager?.beginTransaction()
+        val result = UrlFragment()
+        result.arguments = bundle
         transaction?.replace(frame!!.id, fragment)
+        transaction?.addToBackStack("tag")
+        transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         transaction?.commit()
     }
 }

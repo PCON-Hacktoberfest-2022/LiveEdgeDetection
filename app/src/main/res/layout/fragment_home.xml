@@ -104,5 +104,33 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/db_card"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/card_bg_4"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_scan" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/poppins"
+            android:text="Your Saved Scans"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

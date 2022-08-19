@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentHomeBinding
 
@@ -83,6 +84,8 @@ class HomeFragment : Fragment() {
     private fun changeFragment(fragment: Fragment) {
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         transaction?.replace(frame!!.id, fragment)
+        transaction?.addToBackStack("tag")
+        transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         transaction?.commit()
     }
 }

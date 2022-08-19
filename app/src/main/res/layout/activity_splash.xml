@@ -10,9 +10,10 @@
 
     <ImageView
         android:id="@+id/splash_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_width="240dp"
+        android:layout_height="180dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_splash_image" />
 
     <TextView
         android:id="@+id/splash_text"
@@ -22,8 +23,15 @@
         android:fontFamily="monospace"
         android:text="Live Edge Detection,\nin any form,\nany where"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#A4EEA7"
         android:textSize="20sp"
         android:textStyle="normal" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:elevation="10dp"
+        android:indeterminateTint="#B1F4B5" />
 
 </LinearLayout>
