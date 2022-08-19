@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.ersubhadip.liveedgedetectionsdk.R
@@ -65,9 +66,18 @@ class HomeFragment : Fragment() {
             changeFragment(UrlFragment())
         }
 
-        binding.cameraCard.setOnClickListener(View.OnClickListener {
-            changeFragment(CameraFragment())
-        })
+        binding.cameraCard.setOnClickListener {
+            if (isPermissionGiven) {
+
+                changeFragment(CameraFragment())
+            } else {
+                Toast.makeText(
+                    context,
+                    "You Cannot use the feature without giving camera permission",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun changeFragment(fragment: Fragment) {
