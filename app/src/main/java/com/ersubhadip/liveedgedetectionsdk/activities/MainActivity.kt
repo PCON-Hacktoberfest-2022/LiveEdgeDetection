@@ -7,13 +7,12 @@ import com.ersubhadip.liveedgedetectionsdk.databinding.ActivityMainBinding
 import com.ersubhadip.liveedgedetectionsdk.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         changeFragment(HomeFragment())
-
 
     }
 
@@ -22,5 +21,4 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(binding.frame.id, fragment)
         transaction.commit()
     }
-
 }

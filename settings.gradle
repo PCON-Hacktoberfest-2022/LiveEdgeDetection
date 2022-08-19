@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "LiveEdgeDetectionSDK"
 include ':app'
-include ':sdk'

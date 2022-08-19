@@ -1,25 +1,28 @@
 package com.ersubhadip.liveedgedetectionsdk.fragments
 
-import android.app.Dialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentUrlBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.io.IOException
-import java.net.URL
-import java.net.URLConnection
 
 class UrlFragment : Fragment() {
     private lateinit var binding: FragmentUrlBinding
     private var img: Boolean = false
+    private var frame: FrameLayout? = null
+
+    companion object {
+        var URL = ""
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,7 @@ class UrlFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUrlBinding.inflate(layoutInflater)
+        frame = activity?.findViewById<FrameLayout>(R.id.frame)
         return binding.root
     }
 
@@ -56,11 +60,14 @@ class UrlFragment : Fragment() {
 
         binding.previewBtn.setOnClickListener {
             GlobalScope.launch(Dispatchers.Main) {
-                if (checkValidImageUrl("https://previews.123rf.com/images/artshock/artshock1209/artshock120900045/15221647-imag-of-heart-in-the-blue-sky-against-a-background-of-white-clouds-.jpg")) {
+//                if (checkValidImageUrl(binding.url.toString().trim())) {
+                if (true) {
                     binding.activeBtn.visibility = View.VISIBLE
                     binding.inactiveBtn.visibility = View.GONE
                     binding.errorTv.visibility = View.INVISIBLE
-                    //todo:glide
+                    binding.imagePrev.alpha = 1f
+                    Glide.with(requireContext()).load(binding.url.text.toString().trim())
+                        .into(binding.imagePrev)
 
                 } else {
                     binding.errorTv.visibility = View.VISIBLE
@@ -69,26 +76,35 @@ class UrlFragment : Fragment() {
         }
 
         binding.activeBtn.setOnClickListener {
-            val dialog = Dialog(requireContext())
-            dialog.setContentView(R.layout.process_dialog)
-            dialog.setCancelable(true)
-            dialog.show()
+            URL = binding.url.text.toString().trim()
+            changeFragment(ResultFragment(), "")
         }
 
     }
 
-    private fun checkValidImageUrl(s: String): Boolean {
-        GlobalScope.launch {
-            var connection: URLConnection? = null
-            try {
-                connection = URL(s).openConnection()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-            val contentType: String = connection!!.getHeaderField("Content-Type")
-            img = contentType.startsWith("image/") // if img is true then it is an image
+//    private fun checkValidImageUrl(s: String): Boolean {
+//        GlobalScope.launch {
+//            var connection: URLConnection? = null
+//            try {
+//                connection = URL(s).openConnection()
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//            }
+//            val contentType: String = connection!!.getHeaderField("Content-Type")
+//            img = contentType.startsWith("image/") // if img is true then it is an image
+//
+//        }
+//        return img
+//    }
 
-        }
-        return img
+    private fun changeFragment(fragment: Fragment, url: String) {
+        val result = UrlFragment()
+        val bundle = Bundle()
+        bundle.putString("uri", url)
+        result.arguments = bundle
+        result.arguments = arguments
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(frame!!.id, fragment)
+        transaction?.commit()
     }
 }
