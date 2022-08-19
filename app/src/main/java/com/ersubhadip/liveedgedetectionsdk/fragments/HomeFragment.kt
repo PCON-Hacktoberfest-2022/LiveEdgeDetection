@@ -59,6 +59,10 @@ class HomeFragment : Fragment() {
             )
         }
 
+        binding.dbCard.setOnClickListener {
+            changeFragment(DBListFragment())
+        }
+
         binding.uploadCard.setOnClickListener {
             changeFragment(UploadFragment())
         }
