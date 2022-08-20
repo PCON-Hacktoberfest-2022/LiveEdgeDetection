@@ -42,5 +42,8 @@ Application flow is somewhat like this:
 
 ### Problems Faced while developing
 
+While making the application, the most challenging part was to get a library for edge detection. Initially, I searched for it, but found nothing. After more searches, I got to know about openCV sdk's for android. I used them but I was stuck on the setup part. 
+Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target="_blank">this</a> 
+
 
 
