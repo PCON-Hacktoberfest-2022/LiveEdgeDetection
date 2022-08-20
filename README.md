@@ -46,10 +46,11 @@ While making the application, the most challenging part was to get a library for
 Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target="_blank">this</a> 
 
 <br>
+
 ### Preview
 
 <div align="center">
-<img width="480px" height = "360px" src="https://user-images.githubusercontent.com/89024718/185759441-0044df37-ad5b-434d-ba94-375d76a6ebb0.gif" alt="cover" />
+<img width="600px" height = 480px" src="https://user-images.githubusercontent.com/89024718/185759441-0044df37-ad5b-434d-ba94-375d76a6ebb0.gif" alt="cover" />
 </div>
 <br>
 
