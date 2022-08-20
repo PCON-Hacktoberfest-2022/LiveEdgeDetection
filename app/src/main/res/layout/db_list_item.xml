@@ -16,13 +16,14 @@
         android:scaleType="fitXY"
         android:src="@drawable/ic_launcher_background" />
 
-    <ImageView
+    <jp.co.cyberagent.android.gpuimage.GPUImageView
         android:id="@+id/processedImage"
+        app:gpuimage_show_loading="false"
+        app:gpuimage_surface_type="texture_view"
         android:layout_width="match_parent"
         android:layout_height="88dp"
         android:layout_marginStart="2dp"
         android:layout_weight="1"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher_background" />
+        android:padding="4dp" />
 
 </LinearLayout>

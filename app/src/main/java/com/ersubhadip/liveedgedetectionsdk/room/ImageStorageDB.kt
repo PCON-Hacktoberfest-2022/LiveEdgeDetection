@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
+@TypeConverters(UriToStringConverter::class)
 @Database(entities = [ImageStorageEntity::class], version = 1, exportSchema = false)
 abstract class ImageStorageDB : RoomDatabase() {
     abstract fun imagesDao(): ImageStorage
@@ -31,28 +33,4 @@ abstract class ImageStorageDB : RoomDatabase() {
         }
     }
 
-//    companion object {
-//        @Volatile
-//        private var INSTANCE: ImageStorageDB? = null
-//
-//        @OptIn(InternalCoroutinesApi::class)
-//        fun getDatabase(context: Context): ImageStorageDB {
-//            val tempInstance = INSTANCE
-//            if (tempInstance != null) {
-//                return tempInstance
-//            }
-//
-//            synchronized(this) {
-//                val instance = Room.databaseBuilder(
-//                    context.applicationContext,
-//                    ImageStorageDB::class.java,
-//                    "image_db"
-//                ).build()
-//                INSTANCE = instance
-//                return instance
-//            }
-//
-//        }
-//
-//    }
 }

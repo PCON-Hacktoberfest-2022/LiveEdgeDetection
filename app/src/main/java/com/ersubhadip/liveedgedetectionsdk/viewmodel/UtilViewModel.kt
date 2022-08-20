@@ -10,6 +10,7 @@ import com.ersubhadip.liveedgedetectionsdk.data.ImagesRespositories
 import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageDB
 import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageEntity
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 open class UtilViewModel(myApplication: Context) : ViewModel() {
@@ -22,7 +23,11 @@ open class UtilViewModel(myApplication: Context) : ViewModel() {
     init {
         val imageStorage = ImageStorageDB.getDatabase(myApplication)!!.imagesDao()
         respositories = ImagesRespositories(imageStorage)
-        readImages = respositories.readAllData
+        viewModelScope.launch {
+            respositories.readAllData.collectLatest {
+                readImages.value = it
+            }
+        }
     }
 
     fun addImage(dbListItems: ImageStorageEntity) {

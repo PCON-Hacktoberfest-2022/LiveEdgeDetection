@@ -13,6 +13,7 @@ import com.ersubhadip.liveedgedetectionsdk.adapters.DBListAdapter
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentDBListBinding
 import com.ersubhadip.liveedgedetectionsdk.models.DBListItems
 import com.ersubhadip.liveedgedetectionsdk.viewmodel.UtilViewModel
+import com.ersubhadip.liveedgedetectionsdk.viewmodel.UtilsViewModelFactory
 
 
 class DBListFragment : Fragment() {
@@ -37,7 +38,8 @@ class DBListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dbViewModel = ViewModelProvider(this)[UtilViewModel::class.java]
+        val factory = UtilsViewModelFactory(requireContext())
+        dbViewModel = ViewModelProvider(this, factory)[UtilViewModel::class.java]
         setRv(list)
         //fetch the items and notify
         fetchDBData()
