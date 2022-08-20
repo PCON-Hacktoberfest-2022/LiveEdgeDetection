@@ -62,7 +62,9 @@ Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target
 #### Note - Please accept install anyway option for installation as it is not hosted on playstore.
                                    
 <div align="center">
+                   
 ###### Copyright-2022, Logo and App Developed By Subhadip Das
+                   
 </div>                                                                                                                                
 
 
