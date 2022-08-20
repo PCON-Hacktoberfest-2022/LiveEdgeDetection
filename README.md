@@ -1,5 +1,5 @@
 <div align="center">
-<h3>EdgeX-Detector (An Edge Detection App)</h1>
+<h2>EdgeX-Detector (An Edge Detection App)</h2>
 </div>
 <br>
 <div align="center">
