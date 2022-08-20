@@ -8,6 +8,15 @@
     android:paddingHorizontal="16dp"
     tools:context=".fragments.DBListFragment">
 
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:indeterminateTint="#B1F4B5"
+        android:visibility="gone" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

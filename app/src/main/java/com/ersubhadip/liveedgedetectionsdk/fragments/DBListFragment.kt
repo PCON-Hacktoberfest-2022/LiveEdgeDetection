@@ -21,7 +21,7 @@ class DBListFragment : Fragment() {
     private var list: MutableList<DBListItems> = mutableListOf()
     private var dbAdapter: DBListAdapter? = null
     private lateinit var dbViewModel: UtilViewModel
-    private val manager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+    private val manager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +47,19 @@ class DBListFragment : Fragment() {
     }
 
     private fun fetchDBData() {
+        binding.loader.visibility = View.VISIBLE
         dbViewModel.readAllImages.observe(viewLifecycleOwner, Observer {
             for (i in it) {
                 list.add(DBListItems(i.originalImage, i.processedImage))
             }
-
+            if (list.isEmpty()) {
+                binding.noDataView.visibility = View.VISIBLE
+                binding.listView.visibility = View.GONE
+            } else {
+                binding.noDataView.visibility = View.GONE
+                binding.listView.visibility = View.VISIBLE
+            }
+            binding.loader.visibility = View.GONE
         })
     }
 

@@ -54,7 +54,10 @@ class HomeFragment : Fragment() {
         } else {
             ActivityCompat.requestPermissions(
                 activity as Activity,
-                arrayOf(android.Manifest.permission.CAMERA),
+                arrayOf(
+                    android.Manifest.permission.CAMERA,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ),
                 8000
             )
         }
