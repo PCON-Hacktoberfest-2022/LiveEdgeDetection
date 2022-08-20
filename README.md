@@ -52,6 +52,7 @@ Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target
 <div align="center">
 <img width="700px" height = 480px" src="https://user-images.githubusercontent.com/89024718/185759441-0044df37-ad5b-434d-ba94-375d76a6ebb0.gif" alt="cover" />
 </div>
+
 <br>
 
 <a href="https://drive.google.com/file/d/110kOB1cY6xmyFLRmNO98q3tkMnwuxN__/view?usp=sharing" title="Click here" style="background-color:#FFFFFF;color:#000000;text-decoration:none">Demo Video Link</a>
@@ -59,6 +60,10 @@ Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target
 <a href="https://github.com/Subhadiptech" title="Click here" style="background-color:#FFFFFF;color:#000000;text-decoration:none">App Link</a>
                                                                                                                                 
 #### Note - Please accept install anyway option for installation as it is not hosted on playstore.
-                                                                                                                                
+                                   
+<div align="center">
+###### Copyright-2022, Logo and App Developed By Subhadip Das
+</div>                                                                                                                                
+
 
 
