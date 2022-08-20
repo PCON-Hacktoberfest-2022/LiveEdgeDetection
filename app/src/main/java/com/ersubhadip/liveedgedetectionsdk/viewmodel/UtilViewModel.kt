@@ -11,18 +11,17 @@ import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class UtilViewModel(application: Application) : AndroidViewModel(application) {
+open class UtilViewModel(myApplication: Application) : AndroidViewModel(myApplication) {
     private var readImages = MutableLiveData<List<ImageStorageEntity>>()
     val readAllImages: LiveData<List<ImageStorageEntity>>
-        get() = readImages
+    get() = readImages
 
     private val respositories: ImagesRespositories
 
     init {
-        val imageStorage = ImageStorageDB.getDatabase(application).imagesDao()
+        val imageStorage = ImageStorageDB.getDatabase(myApplication).imagesDao()
         respositories = ImagesRespositories(imageStorage)
         readImages = respositories.readAllData
-
     }
 
     fun addImage(dbListItems: ImageStorageEntity) {

@@ -104,8 +104,7 @@ class UrlFragment : Fragment() {
         bundle.putInt("indexFragment", 2)
         bundle.putString("url", binding.url.text.toString().trim())
         val transaction = activity?.supportFragmentManager?.beginTransaction()
-        val result = UrlFragment()
-        result.arguments = bundle
+        fragment.arguments = bundle
         transaction?.replace(frame!!.id, fragment)
         transaction?.addToBackStack("tag")
         transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentResultBinding
 import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageEntity
@@ -26,7 +26,6 @@ class ResultFragment : Fragment() {
     private var isDone = false
     private var uri: Uri? = null
     private var url: String? = null
-    private lateinit var dbViewmodel: UtilViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,25 +43,15 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dbViewmodel = ViewModelProvider(this)[UtilViewModel::class.java]
-//        if (arguments != null) {
-//            val index = arguments?.getInt("indexFragment")
-//            Toast.makeText(context, ""+index, Toast.LENGTH_SHORT).show()
-//            when (index) {
-//                0 -> processImageByCameraCapture()
-//
-//                1 -> processImageByUri(arguments?.getParcelable("uri"))
-//
-//                2 -> processImageByUrl(arguments?.getString("url"))
-//            }
-//        }
 
-        uri = UploadFragment.uri
-        url = UrlFragment.url
-        if (url != null && uri == null) {
-            processImageByUrl(url)
-        } else if (url == null && uri != null) {
-            processImageByUri(uri)
+        if (arguments != null) {
+            when (arguments?.getInt("indexFragment")) {
+                0 -> processImageByUri(arguments?.getParcelable("CamUri"))
+
+                1 -> processImageByUri(arguments?.getParcelable("uri"))
+
+                2 -> processImageByUrl(arguments?.getString("url"))
+            }
         }
 
         binding.saveBtn.setOnClickListener {
@@ -90,22 +79,6 @@ class ResultFragment : Fragment() {
 
     }
 
-    private fun processImageByCameraCapture() {
-//        val gpuImageView = binding.processedImageView
-//        gpuImageView.setImage(uri)
-//        gpuImageView.filter = GPUImageSobelEdgeDetectionFilter()
-//
-//        GlobalScope.launch(Dispatchers.Main) {
-//            dialog.show()
-//            delay(4000L)
-//            dialog.dismiss()
-//        }
-//
-//        // Later when image should be saved saved:
-////        gpuImageView.saveToPictures("GPUImage", "ImageWithFilter.jpg", null)
-
-    }
-
     private fun processImageByUrl(url: String?) {
         val imageUri: Uri =
             Uri.parse(url)
@@ -125,10 +98,11 @@ class ResultFragment : Fragment() {
     }
 
     private fun saveImageToDB(o: Uri?, p: Uri?) {
+        val dbViewmodel: UtilViewModel by viewModels()
+//        dbViewmodel = ViewModelProvider(this).get(UtilViewModel::class.java)
         val data = ImageStorageEntity(0, o, p)
         dbViewmodel.addImage(data)
         Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show()
         isDone = true
-
     }
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.models.DBListItems
 
-class DBListAdapter(private val list: List<DBListItems>) :
+class DBListAdapter(private val list: MutableList<DBListItems>) :
     RecyclerView.Adapter<DBListAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

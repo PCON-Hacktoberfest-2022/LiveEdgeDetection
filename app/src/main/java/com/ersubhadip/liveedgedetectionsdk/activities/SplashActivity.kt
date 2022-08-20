@@ -3,7 +3,9 @@ package com.ersubhadip.liveedgedetectionsdk.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.databinding.ActivitySplashBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -19,6 +21,11 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        animationUp = AnimationUtils.loadAnimation(this, R.anim.anim_down)
+        animationDown = AnimationUtils.loadAnimation(this, R.anim.anim_down)
+
+        binding.splashImage.animation = animationDown
+        binding.splashText.animation = animationUp
 
         GlobalScope.launch(Dispatchers.Main) {
             delay(3000L)

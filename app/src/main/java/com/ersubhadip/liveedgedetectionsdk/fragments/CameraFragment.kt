@@ -3,12 +3,14 @@ package com.ersubhadip.liveedgedetectionsdk.fragments
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Surface.ROTATION_0
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCapture.FLASH_MODE_AUTO
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -22,8 +24,6 @@ import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentCameraBinding
 class CameraFragment : Fragment() {
     private lateinit var binding: FragmentCameraBinding
     private var uri: Uri? = null
-
-    //    private lateinit var outputDirectory: File
     private var imageCapture: ImageCapture? = null
     private var frame: FrameLayout? = null
 
@@ -79,7 +79,10 @@ class CameraFragment : Fragment() {
                         binding.previewView.surfaceProvider
                     )
                 }
-            imageCapture = ImageCapture.Builder().build()
+            imageCapture = ImageCapture.Builder()
+                .setTargetRotation(ROTATION_0)
+                .setFlashMode(FLASH_MODE_AUTO)
+                .build()
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
             try {
                 cameraProvider.unbindAll()
@@ -88,10 +91,6 @@ class CameraFragment : Fragment() {
 
             }
         }, context?.let { ContextCompat.getMainExecutor(it) }!!)
-//            val parent:ViewGroup = binding.texture.parent as ViewGroup
-//            parent.removeView(binding.texture)
-//            parent.addView(binding.texture, 0)
-//            binding.texture.surfaceTexture = it.surefaceTexture
 
     }
 
@@ -122,7 +121,11 @@ class CameraFragment : Fragment() {
     }
 
     private fun changeFragment(fragment: Fragment) {
+        val bundle = Bundle()
+        bundle.putInt("fragmentIndex", 0)
+        bundle.putParcelable("CamUri", uri)
         val transaction = activity?.supportFragmentManager?.beginTransaction()
+        fragment.arguments = bundle
         transaction?.replace(frame!!.id, fragment)
         transaction?.addToBackStack("tag")
         transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

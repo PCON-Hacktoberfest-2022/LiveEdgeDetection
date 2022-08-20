@@ -10,4 +10,5 @@ data class ImageStorageEntity(
     @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "original_image") val originalImage: Uri?,
     @ColumnInfo(name = "processed_image") val processedImage: Uri?
+
 )

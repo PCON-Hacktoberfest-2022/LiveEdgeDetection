@@ -17,7 +17,7 @@ import com.ersubhadip.liveedgedetectionsdk.viewmodel.UtilViewModel
 
 class DBListFragment : Fragment() {
     private lateinit var binding: FragmentDBListBinding
-    private var list: List<DBListItems> = mutableListOf()
+    private var list: MutableList<DBListItems> = mutableListOf()
     private var dbAdapter: DBListAdapter? = null
     private lateinit var dbViewModel: UtilViewModel
     private val manager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -46,12 +46,14 @@ class DBListFragment : Fragment() {
 
     private fun fetchDBData() {
         dbViewModel.readAllImages.observe(viewLifecycleOwner, Observer {
-//            list.add(DBListItems())
+            for (i in it) {
+                list.add(DBListItems(i.originalImage, i.processedImage))
+            }
 
         })
     }
 
-    private fun setRv(list: List<DBListItems>) {
+    private fun setRv(list: MutableList<DBListItems>) {
         dbAdapter = DBListAdapter(list)
         binding.listView.apply {
             layoutManager = manager

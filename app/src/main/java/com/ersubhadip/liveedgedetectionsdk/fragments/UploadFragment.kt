@@ -77,8 +77,7 @@ class UploadFragment : Fragment() {
         bundle.putInt("indexFragment", 1)
         bundle.putParcelable("uri", uri)
         val transaction = activity?.supportFragmentManager?.beginTransaction()
-        val resultFragment = ResultFragment()
-        resultFragment.arguments = bundle
+        fragment.arguments = bundle
         transaction?.replace(frame!!.id, fragment)
         transaction?.addToBackStack("tag")
         transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
