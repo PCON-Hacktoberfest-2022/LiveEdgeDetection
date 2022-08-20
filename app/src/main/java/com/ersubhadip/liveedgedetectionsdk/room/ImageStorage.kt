@@ -14,5 +14,5 @@ interface ImageStorage {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun storeImage()
+    suspend fun storeImage(imageStorageEntity: ImageStorageEntity)
 }

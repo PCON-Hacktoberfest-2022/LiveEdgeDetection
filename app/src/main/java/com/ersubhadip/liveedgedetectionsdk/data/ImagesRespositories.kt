@@ -9,6 +9,6 @@ class ImagesRespositories(private val imageStorage: ImageStorage) {
     val readAllData: MutableLiveData<List<ImageStorageEntity>> = imageStorage.getAllImages()
 
     suspend fun addImage(dbListItems: ImageStorageEntity) {
-        imageStorage.storeImage()
+        imageStorage.storeImage(dbListItems)
     }
 }
