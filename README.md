@@ -54,4 +54,13 @@ Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target
 </div>
 <br>
 
+<a href="https://github.com/Subhadiptech" title="Click here" style="background-color:#FFFFFF;color:#000000;text-decoration:none">Demo Video Link</a>
+
+<br>
+                                                                                                                                
+<a href="https://github.com/Subhadiptech" title="Click here" style="background-color:#FFFFFF;color:#000000;text-decoration:none">App Link</a>
+                                                                                                                                
+##### Note - Please accept install anyway option for installation as it is not hosted on playstore.
+                                                                                                                                
+
 
