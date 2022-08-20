@@ -3,15 +3,18 @@ package com.ersubhadip.liveedgedetectionsdk.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ersubhadip.liveedgedetectionsdk.data.ImagesRespositories
-import com.ersubhadip.liveedgedetectionsdk.models.DBListItems
 import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageDB
+import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UtilViewModel(application: Application) : AndroidViewModel(application) {
-    private val readImages: LiveData<MutableList<DBListItems>>
+    private var readImages = MutableLiveData<List<ImageStorageEntity>>()
+    val readAllImages: LiveData<List<ImageStorageEntity>>
+        get() = readImages
 
     private val respositories: ImagesRespositories
 
@@ -22,7 +25,7 @@ class UtilViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun addImage(dbListItems: DBListItems) {
+    fun addImage(dbListItems: ImageStorageEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             respositories.addImage(dbListItems)
         }

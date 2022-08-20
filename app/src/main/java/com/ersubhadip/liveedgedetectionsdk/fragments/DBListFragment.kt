@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.liveedgedetectionsdk.adapters.DBListAdapter
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentDBListBinding
 import com.ersubhadip.liveedgedetectionsdk.models.DBListItems
+import com.ersubhadip.liveedgedetectionsdk.viewmodel.UtilViewModel
 
 
 class DBListFragment : Fragment() {
     private lateinit var binding: FragmentDBListBinding
-    private var list: MutableList<DBListItems> = mutableListOf()
+    private var list: List<DBListItems> = mutableListOf()
     private var dbAdapter: DBListAdapter? = null
-    val manager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+    private lateinit var dbViewModel: UtilViewModel
+    private val manager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +37,7 @@ class DBListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dbViewModel = ViewModelProvider(this)[UtilViewModel::class.java]
         setRv(list)
         //fetch the items and notify
         fetchDBData()
@@ -40,10 +45,13 @@ class DBListFragment : Fragment() {
     }
 
     private fun fetchDBData() {
+        dbViewModel.readAllImages.observe(viewLifecycleOwner, Observer {
+//            list.add(DBListItems())
 
+        })
     }
 
-    private fun setRv(list: MutableList<DBListItems>) {
+    private fun setRv(list: List<DBListItems>) {
         dbAdapter = DBListAdapter(list)
         binding.listView.apply {
             layoutManager = manager

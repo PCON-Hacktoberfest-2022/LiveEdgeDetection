@@ -1,14 +1,14 @@
 package com.ersubhadip.liveedgedetectionsdk.data
 
-import androidx.lifecycle.LiveData
-import com.ersubhadip.liveedgedetectionsdk.models.DBListItems
+import androidx.lifecycle.MutableLiveData
 import com.ersubhadip.liveedgedetectionsdk.room.ImageStorage
+import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageEntity
 
 class ImagesRespositories(private val imageStorage: ImageStorage) {
 
-    val readAllData: LiveData<MutableList<DBListItems>> = imageStorage.getAllImages()
+    val readAllData: MutableLiveData<List<ImageStorageEntity>> = imageStorage.getAllImages()
 
-    suspend fun addImage(dbListItems: DBListItems) {
+    suspend fun addImage(dbListItems: ImageStorageEntity) {
         imageStorage.storeImage()
     }
 }
