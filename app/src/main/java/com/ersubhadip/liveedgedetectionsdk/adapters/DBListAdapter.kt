@@ -9,6 +9,7 @@ import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.models.DBListItems
 import jp.co.cyberagent.android.gpuimage.GPUImageView
 import jp.co.cyberagent.android.gpuimage.filter.GPUImageSobelEdgeDetectionFilter
+import java.io.File
 
 class DBListAdapter(private val list: MutableList<DBListItems>) :
     RecyclerView.Adapter<DBListAdapter.ViewHolder>() {
@@ -30,7 +31,15 @@ class DBListAdapter(private val list: MutableList<DBListItems>) :
 //        holder.image2.setImageURI(list.get(position).processed)
 
         val gpuImageView = holder.image2
-        gpuImageView.setImage(list[position].processed)
+        val uri = list[position].processed
+        if ("file".equals(uri?.getScheme())) {
+            val filePath = File(uri!!.path)
+            gpuImageView.setImage(filePath)
+        }
+        else{
+            gpuImageView.setImage(uri)
+        }
+        //gpuImageView.setImage(list[position].processed)
         gpuImageView.filter = GPUImageSobelEdgeDetectionFilter()
     }
 
