@@ -64,7 +64,7 @@ class DBListFragment : Fragment() {
     }
 
     private fun setRv(list: MutableList<DBListItems>) {
-        dbAdapter = DBListAdapter(list)
+        dbAdapter = DBListAdapter(context,list)
         binding.listView.apply {
             layoutManager = manager
             adapter = dbAdapter

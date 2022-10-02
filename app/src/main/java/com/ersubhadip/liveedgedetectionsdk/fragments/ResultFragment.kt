@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.databinding.FragmentResultBinding
 import com.ersubhadip.liveedgedetectionsdk.room.ImageStorageEntity
+import com.ersubhadip.liveedgedetectionsdk.utils.URIPathHelper
 import com.ersubhadip.liveedgedetectionsdk.viewmodel.UtilViewModel
 import com.ersubhadip.liveedgedetectionsdk.viewmodel.UtilsViewModelFactory
 import jp.co.cyberagent.android.gpuimage.filter.GPUImageSobelEdgeDetectionFilter
@@ -20,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.File
 
 
 class ResultFragment : Fragment() {
@@ -74,7 +76,15 @@ class ResultFragment : Fragment() {
 
     private fun processImageByUri(uri: Uri?) {
         val gpuImageView = binding.processedImageView
-        gpuImageView.setImage(uri)
+        if ("file".equals(uri?.getScheme())) {
+            val uriPathHelper= URIPathHelper()
+            val filePath = uri?.let { context?.let { it1 -> uriPathHelper.getPath(it1,it) } }
+            gpuImageView.setImage(File(filePath))
+        }
+        else{
+            gpuImageView.setImage(uri)
+        }
+        //gpuImageView.setImage(uri)
         gpuImageView.filter = GPUImageSobelEdgeDetectionFilter()
 
         GlobalScope.launch(Dispatchers.Main) {

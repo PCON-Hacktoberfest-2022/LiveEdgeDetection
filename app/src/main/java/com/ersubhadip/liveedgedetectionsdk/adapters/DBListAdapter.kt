@@ -1,5 +1,6 @@
 package com.ersubhadip.liveedgedetectionsdk.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +8,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.liveedgedetectionsdk.R
 import com.ersubhadip.liveedgedetectionsdk.models.DBListItems
+import com.ersubhadip.liveedgedetectionsdk.utils.URIPathHelper
 import jp.co.cyberagent.android.gpuimage.GPUImageView
 import jp.co.cyberagent.android.gpuimage.filter.GPUImageSobelEdgeDetectionFilter
+import java.io.File
 
-class DBListAdapter(private val list: MutableList<DBListItems>) :
+class DBListAdapter(private val context: Context?, private val list: MutableList<DBListItems>) :
     RecyclerView.Adapter<DBListAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image1 = view.findViewById<ImageView>(R.id.originalImage)
@@ -30,7 +33,16 @@ class DBListAdapter(private val list: MutableList<DBListItems>) :
 //        holder.image2.setImageURI(list.get(position).processed)
 
         val gpuImageView = holder.image2
-        gpuImageView.setImage(list[position].processed)
+        val uri = list[position].processed
+        if ("file".equals(uri?.getScheme())) {
+            val uriPathHelper= URIPathHelper()
+            val filePath = uri?.let { context?.let { it1 -> uriPathHelper.getPath(it1,it) } }
+            gpuImageView.setImage(File(filePath))
+        }
+        else{
+            gpuImageView.setImage(list[position].processed)
+        }
+        //gpuImageView.setImage(list[position].processed)
         gpuImageView.filter = GPUImageSobelEdgeDetectionFilter()
     }
 
