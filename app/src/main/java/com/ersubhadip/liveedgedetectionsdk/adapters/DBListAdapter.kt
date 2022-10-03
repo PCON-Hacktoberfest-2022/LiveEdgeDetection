@@ -25,7 +25,8 @@ class DBListAdapter(private val list: MutableList<DBListItems>) :
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: DBListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DBListAdapter.ViewHolder, position: Int){
+
         //setting data
         holder.image1.setImageURI(list.get(position).original)
 //        holder.image2.setImageURI(list.get(position).processed)
@@ -34,10 +35,10 @@ class DBListAdapter(private val list: MutableList<DBListItems>) :
         val uri = list[position].processed
         if ("file".equals(uri?.getScheme())) {
             val filePath = File(uri!!.path)
-            gpuImageView.setImage(filePath)
+            try {gpuImageView.setImage(filePath)} catch(ex:Exception){}
         }
         else{
-            gpuImageView.setImage(uri)
+            try {gpuImageView.setImage(uri)} catch(ex:Exception){}
         }
         //gpuImageView.setImage(list[position].processed)
         gpuImageView.filter = GPUImageSobelEdgeDetectionFilter()
