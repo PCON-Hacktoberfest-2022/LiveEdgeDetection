@@ -20,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.File
 
 
 class ResultFragment : Fragment() {
@@ -74,7 +75,15 @@ class ResultFragment : Fragment() {
 
     private fun processImageByUri(uri: Uri?) {
         val gpuImageView = binding.processedImageView
-        gpuImageView.setImage(uri)
+
+        if ("file".equals(uri?.getScheme())) {
+            val filePath = File(uri!!.path)
+            gpuImageView.setImage(filePath)
+        }
+        else{
+            gpuImageView.setImage(uri)
+        }
+        //gpuImageView.setImage(uri)
         gpuImageView.filter = GPUImageSobelEdgeDetectionFilter()
 
         GlobalScope.launch(Dispatchers.Main) {
