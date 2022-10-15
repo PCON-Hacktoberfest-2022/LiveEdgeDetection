@@ -23,7 +23,7 @@ Edge detection of the images provided through:
 - Uploading Image from local storage
 - Doing Camera Captures
 - Providing URL of the specific image
-<br>
+
 - The original and the processed image is then stored to the local RoomDB
 
 ### My strategy and Application FLow
@@ -39,7 +39,7 @@ On the basis of the challenge provided, I decided to use the following to make m
 Application flow is somewhat like this: 
 
 <img width="480px" height = "360px" src="https://user-images.githubusercontent.com/89024718/185720499-da6f9a33-6509-4c2b-8945-a738e0f9a1e3.png" alt="cover" />
-
+<br>
 ### Problems Faced while developing
 
 While making the application, the most challenging part was to get a library for edge detection. Initially, I searched for it, but found nothing. After more searches, I got to know about openCV sdk's for android. I used them but I was stuck on the setup part. 
