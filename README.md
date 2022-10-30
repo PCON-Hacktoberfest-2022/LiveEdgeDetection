@@ -10,9 +10,9 @@
 ### About the Application
 
 According to the problem statement provided, there should be a  simple Android app that allows users to upload an image, process the image, and store the
-resultant image and original image in a database. Moreover, we can implement users to upload images from URL, work on black&white and color images and also option to take image from camera.
+resultant image and original image in a database. Moreover, we can implement users to upload images from URL, work on black and white and color images and also option to take image from camera.
 
-My idea was to make a Kotlin based Application which will use some edge detection library built over openCV, so that it becomes easy for me to do the job done. On the Landing Screen, it contains 4 options, 3 of them are the ways user can provide the image i.e with url, uploading from local file or camera shots.
+My idea was to make a Kotlin based Application which will use some edge detection library built over openCV, so that it becomes easy for me to do the job done. On the Landing Screen, it contains 4 options,3 of them are the ways user can provide the image i.e with url, uploading from local file or camera shots.
 The last option is the option to view all the saved collections (original image and the processed one). We have used RoomDB to perform the DB operation so that each user can have unique collection on their storage saved locally.
 It's very easy to use with minimalistic UI.
 
