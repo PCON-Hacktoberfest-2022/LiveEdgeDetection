@@ -36,6 +36,7 @@ On the basis of the challenge provided, I decided to use the following to make m
 - RoomDB for Storing purposes
 - EdgeDetection Library (this library was not perfectly a OpenCV product but a GPU IMAGE rendering library which supports many filters among which I found EdgeDetection too.)
 
+
 Application flow is somewhat like this: 
 
 <img width="480px" height = "360px" src="https://user-images.githubusercontent.com/89024718/185720499-da6f9a33-6509-4c2b-8945-a738e0f9a1e3.png" alt="cover" />
@@ -60,6 +61,8 @@ Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target
 <a href="https://drive.google.com/file/d/1bgeYqkHk_v77uxmWBeiltgDRSc4-9CjV/view?usp=sharing" title="Click here" style="background-color:#FFFFFF;color:#000000;text-decoration:none">App Link</a>
                                                                                                                                 
 #### Note - Please accept install anyway option for installation as it is not hosted on playstore.
+
+<br>
                                    
 <div align="center">
                    
