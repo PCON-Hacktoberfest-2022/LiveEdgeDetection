@@ -66,7 +66,7 @@ Then finally I got <a href="https://github.com/cats-oss/android-gpuimage" target
                                    
 <div align="center">
                    
-###### Copyright-2022, Logo and App Developed By Subhadip Das
+###### Copyright-2022, Logo and App Developed By $ubhadip Das
                    
 </div>                                                                                                                                
 
